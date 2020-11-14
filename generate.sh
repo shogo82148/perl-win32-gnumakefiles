@@ -27,4 +27,11 @@ $(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.13.10/GNUMakefile v5.13.1
 PATCH
     }
 }
+
+sub _patch_gnumakefile_508 {
+    my \$version = shift;
+    _write_gnumakefile(\$version, <<'MAKEFILE');
+$(cat v5.8.0/GNUMakefile)
+MAKEFILE
+}
 END
