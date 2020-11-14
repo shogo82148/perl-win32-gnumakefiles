@@ -10,6 +10,7 @@ MAKEFILE
         _patch(<<'PATCH');
 $(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.12.0/GNUMakefile v5.13.10/GNUMakefile)
 PATCH
+    }
     if (_ge(\$version, "5.13.11")) {
         _patch(<<'PATCH');
 $(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.13.10/GNUMakefile v5.13.11/GNUMakefile)
