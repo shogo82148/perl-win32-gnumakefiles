@@ -408,7 +408,8 @@ WIN32_SRC	=		\
 		.\win32.c	\
 		.\win32sck.c	\
 		.\win32thread.c	\
-		.\fcrypt.c
+		.\fcrypt.c	\
+		.\win32io.c
 
 X2P_SRC		=		\
 		..\x2p\a2p.c	\
