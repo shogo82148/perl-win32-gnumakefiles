@@ -203,14 +203,14 @@ sub _patch_gnumakefile_512 {
     _write_gnumakefile(\$version, <<'MAKEFILE');
 $(cat v5.12.0/GNUmakefile)
 MAKEFILE
-    if (_ge(\$version, "5.13.3")) {
+    if (_ge(\$version, "5.13.0")) {
         _patch_gnumakefile(\$version, <<'PATCH');
-$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.12.0/GNUmakefile v5.13.3/GNUmakefile)
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.12.0/GNUmakefile v5.13.0/GNUmakefile)
 PATCH
     }
     if (_ge(\$version, "5.13.4")) {
         _patch_gnumakefile(\$version, <<'PATCH');
-$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.13.3/GNUmakefile v5.13.4/GNUmakefile)
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.13.0/GNUmakefile v5.13.4/GNUmakefile)
 PATCH
     }
     if (_ge(\$version, "5.13.5")) {
