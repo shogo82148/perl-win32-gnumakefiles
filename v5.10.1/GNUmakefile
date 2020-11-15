@@ -2,7 +2,6 @@ SHELL := cmd.exe
 GCCBIN := gcc
 INST_DRV := c:
 INST_TOP := $(INST_DRV)\perl
-#WIN64		:= undef
 #INST_VER	:= \__INST_VER__
 #INST_ARCH	:= \$(ARCHNAME)
 #USE_SITECUST	:= define

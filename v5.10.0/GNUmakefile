@@ -10,8 +10,6 @@ USE_ITHREADS	:= define
 USE_IMP_SYS	:= define
 USE_PERLIO	:= define
 USE_LARGE_FILES	:= define
-#USE_64_BIT_INT	:= define
-#USE_LONG_DOUBLE :=define
 CCTYPE		:= GCC
 #CFG		:= Debug
 #USE_PERLCRT	= define
@@ -20,6 +18,8 @@ CRYPT_SRC      = fcrypt.c
 #CRYPT_LIB     = -lfcrypt
 #PERL_MALLOC	:= define
 #DEBUG_MSTATS	:= define
+#BUILD_STATIC	:= define
+#ALL_STATIC	:= define
 CCHOME		:= C:\MinGW
 
 CCINCDIR := $(CCHOME)\include
@@ -42,9 +42,6 @@ USE_ITHREADS	?= undef
 USE_IMP_SYS	?= undef
 USE_PERLIO	?= undef
 USE_LARGE_FILES	?= undef
-USE_64_BIT_INT	?= undef
-USE_LONG_DOUBLE	?= undef
-USE_NO_REGISTRY	?= undef
 
 ifeq ($(USE_IMP_SYS),define)
 PERL_MALLOC	= undef
@@ -85,10 +82,6 @@ ifneq ($(USE_IMP_SYS),undef)
 BUILDOPT	+= -DPERL_IMPLICIT_SYS
 endif
 
-ifeq ($(USE_NO_REGISTRY),define)
-BUILDOPT	+= -DWIN32_NO_REGISTRY
-endif
-
 WIN64 := define
 PROCESSOR_ARCHITECTURE := x64
 USE_64_BIT_INT = define
@@ -104,22 +97,8 @@ ARCHNAME	= MSWin32-$(ARCHITECTURE)
 endif
 endif
 
-ifeq ($(USE_PERLIO),define)
-BUILDOPT	+= -DUSE_PERLIO
-endif
-
 ifeq ($(USE_ITHREADS),define)
 ARCHNAME	:= $(ARCHNAME)-thread
-endif
-
-ifneq ($(WIN64),define)
-ifeq ($(USE_64_BIT_INT),define)
-ARCHNAME	:= $(ARCHNAME)-64int
-endif
-endif
-
-ifeq ($(USE_LONG_DOUBLE),define)
-ARCHNAME	:= $(ARCHNAME)-ld
 endif
 
 ARCHDIR		= ..\lib\$(ARCHNAME)
@@ -149,11 +128,6 @@ LINK32		= $(ARCHPREFIX)g++
 LIB32		= $(ARCHPREFIX)ar rc
 IMPLIB		= $(ARCHPREFIX)dlltool
 RSC		= $(ARCHPREFIX)windres
-
-ifeq ($(USE_LONG_DOUBLE),define)
-BUILDOPT        += -D__USE_MINGW_ANSI_STDIO
-MINIBUILDOPT    += -D__USE_MINGW_ANSI_STDIO
-endif
 
 BUILDOPT        += -fwrapv
 MINIBUILDOPT    += -fwrapv
@@ -471,6 +445,7 @@ STATIC_EXT	= Win32CORE
 DYNALOADER	= $(EXTDIR)\DynaLoader\DynaLoader
 
 CFG_VARS	=					\
+		"INST_DRV=$(INST_DRV)"			\
 		"INST_TOP=$(INST_TOP)"			\
 		"INST_VER=$(INST_VER)"			\
 		"INST_ARCH=$(INST_ARCH)"		\
@@ -478,7 +453,6 @@ CFG_VARS	=					\
 		"cc=$(CC)"				\
 		"ld=$(LINK32)"				\
 		"ccflags=$(subst ",\",$(EXTRACFLAGS) $(OPTIMIZE) $(DEFINES) $(BUILDOPT))" \
-		"usecplusplus=$(USE_CPLUSPLUS)"		\
 		"cf_email=$(EMAIL)"			\
 		"d_mymalloc=$(PERL_MALLOC)"		\
 		"libs=$(LIBFILES)"			\
@@ -496,14 +470,10 @@ CFG_VARS	=					\
 		"useithreads=$(USE_ITHREADS)"		\
 		"usemultiplicity=$(USE_MULTI)"		\
 		"useperlio=$(USE_PERLIO)"		\
-		"use64bitint=$(USE_64_BIT_INT)"		\
-		"uselongdouble=$(USE_LONG_DOUBLE)"	\
 		"uselargefiles=$(USE_LARGE_FILES)"	\
 		"usesitecustomize=$(USE_SITECUST)"	\
 		"LINK_FLAGS=$(subst ",\",$(LINK_FLAGS))"\
-		"optimize=$(subst ",\",$(OPTIMIZE))"	\
-		"ARCHPREFIX=$(ARCHPREFIX)"		\
-		"WIN64=$(WIN64)"
+		"optimize=$(subst ",\",$(OPTIMIZE))"
 
 ICWD = -I..\cpan\Cwd -I..\cpan\Cwd\lib
 
@@ -598,64 +568,18 @@ else
 	echo #undef HAS_STRTOULL&& \
 	echo #define Size_t_size ^4)>> config.h
 endif
-ifeq ($(USE_64_BIT_INT),define)
 	@(echo #define IVTYPE $(INT64)&& \
 	echo #define UVTYPE unsigned $(INT64)&& \
 	echo #define IVSIZE ^8&& \
 	echo #define UVSIZE ^8)>> config.h
-ifeq ($(USE_LONG_DOUBLE),define)
-	@(echo #define NV_PRESERVES_UV&& \
-	echo #define NV_PRESERVES_UV_BITS 64)>> config.h
-else
 	@(echo #undef NV_PRESERVES_UV&& \
 	echo #define NV_PRESERVES_UV_BITS 53)>> config.h
-endif
 	@(echo #define IVdf "I64d"&& \
 	echo #define UVuf "I64u"&& \
 	echo #define UVof "I64o"&& \
 	echo #define UVxf "I64x"&& \
 	echo #define UVXf "I64X"&& \
 	echo #define USE_64_BIT_INT)>> config.h
-else
-	@(echo #define IVTYPE long&& \
-	echo #define UVTYPE unsigned long&& \
-	echo #define IVSIZE ^4&& \
-	echo #define UVSIZE ^4&& \
-	echo #define NV_PRESERVES_UV&& \
-	echo #define NV_PRESERVES_UV_BITS 32&& \
-	echo #define IVdf "ld"&& \
-	echo #define UVuf "lu"&& \
-	echo #define UVof "lo"&& \
-	echo #define UVxf "lx"&& \
-	echo #define UVXf "lX"&& \
-	echo #undef USE_64_BIT_INT)>> config.h
-endif
-ifeq ($(USE_LONG_DOUBLE),define)
-	@(echo #define Gconvert^(x,n,t,b^) sprintf^(^(b^),"%%.*""Lg",^(n^),^(x^)^)&& \
-	echo #define HAS_FREXPL&& \
-	echo #define HAS_ISNANL&& \
-	echo #define HAS_MODFL&& \
-	echo #define HAS_MODFL_PROTO&& \
-	echo #define HAS_SQRTL&& \
-	echo #define HAS_STRTOLD&& \
-	echo #define PERL_PRIfldbl "Lf"&& \
-	echo #define PERL_PRIgldbl "Lg"&& \
-	echo #define PERL_PRIeldbl "Le"&& \
-	echo #define PERL_SCNfldbl "Lf"&& \
-	echo #define NVTYPE long double)>> config.h
-ifeq ($(WIN64),define)
-	@(echo #define NVSIZE ^16&& \
-	echo #define LONG_DOUBLESIZE ^16)>> config.h
-else
-	@(echo #define NVSIZE ^12&& \
-	echo #define LONG_DOUBLESIZE ^12)>> config.h
-endif
-	@(echo #define NV_OVERFLOWS_INTEGERS_AT 256.0*256.0*256.0*256.0*256.0*256.0*256.0*2.0*2.0*2.0*2.0*2.0*2.0*2.0*2.0&& \
-	echo #define NVef "Le"&& \
-	echo #define NVff "Lf"&& \
-	echo #define NVgf "Lg"&& \
-	echo #define USE_LONG_DOUBLE)>> config.h
-else
 	@(echo #define Gconvert^(x,n,t,b^) sprintf^(^(b^),"%%.*g",^(n^),^(x^)^)&& \
 	echo #undef HAS_FREXPL&& \
 	echo #undef HAS_ISNANL&& \
@@ -675,14 +599,6 @@ else
 	echo #define NVff "f"&& \
 	echo #define NVgf "g"&& \
 	echo #undef USE_LONG_DOUBLE)>> config.h
-endif
-ifeq ($(USE_CPLUSPLUS),define)
-	@(echo #define USE_CPLUSPLUS&& \
-	echo #endif)>> config.h
-else
-	@(echo #undef USE_CPLUSPLUS&& \
-	echo #endif)>> config.h
-endif
 #separate line since this is sentinal that this target is done
 	rem. > $(MINIDIR)\.exists
 
@@ -804,10 +720,6 @@ $(HAVEMINIPERL): $(MINI_OBJ)
 Extensions : ..\make_ext.pl $(HAVEMINIPERL) $(PERLDEP) $(CONFIGPM) $(DYNALOADER)
 	$(XCOPY) ..\\*.h $(COREDIR)\\*.*
 	$(MINIPERL) -I..\lib $(ICWD) ..\make_ext.pl "MAKE=$(PLMAKE)" --dir=$(CPANDIR) --dir=$(DISTDIR) --dir=$(EXTDIR) --dynamic
-
-Extensions_reonly : ..\make_ext.pl $(HAVEMINIPERL) $(PERLDEP) $(CONFIGPM) $(DYNALOADER)
-	$(XCOPY) ..\\*.h $(COREDIR)\\*.*
-	$(MINIPERL) -I..\lib $(ICWD) ..\make_ext.pl "MAKE=$(PLMAKE)" --dir=$(CPANDIR) --dir=$(DISTDIR) --dir=$(EXTDIR) --dynamic +re
 
 Extensions_static : ..\make_ext.pl $(HAVEMINIPERL) list_static_libs.pl $(CONFIGPM) Extensions_nonxs
 	$(XCOPY) ..\\*.h $(COREDIR)\\*.*
