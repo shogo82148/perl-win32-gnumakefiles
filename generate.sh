@@ -28,6 +28,13 @@ PATCH
     }
 }
 
+sub _patch_gnumakefile_510 {
+    my \$version = shift;
+    _write_gnumakefile(\$version, <<'MAKEFILE');
+$(cat v5.10.0/GNUMakefile)
+MAKEFILE
+}
+
 sub _patch_gnumakefile_508 {
     my \$version = shift;
     _write_gnumakefile(\$version, <<'MAKEFILE');
