@@ -63,4 +63,18 @@ $(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.8.7/GNUMakefile v5.8.9/GN
 PATCH
     }
 }
+
+sub _patch_gnumakefile_507 {
+    my \$version = shift;
+    _write_gnumakefile(\$version, <<'MAKEFILE');
+$(cat v5.7.0/GNUMakefile)
+MAKEFILE
+}
+
+sub _patch_gnumakefile_506 {
+    my \$version = shift;
+    _write_gnumakefile(\$version, <<'MAKEFILE');
+$(cat v5.6.0/GNUMakefile)
+MAKEFILE
+}
 END
