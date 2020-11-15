@@ -33,5 +33,15 @@ sub _patch_gnumakefile_508 {
     _write_gnumakefile(\$version, <<'MAKEFILE');
 $(cat v5.8.0/GNUMakefile)
 MAKEFILE
+    if (_ge(\$version, "5.8.6")) {
+        _patch(<<'PATCH');
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.8.0/GNUMakefile v5.8.6/GNUMakefile)
+PATCH
+    }
+    if (_ge(\$version, "5.8.7")) {
+        _patch(<<'PATCH');
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.8.6/GNUMakefile v5.8.7/GNUMakefile)
+PATCH
+    }
 }
 END
