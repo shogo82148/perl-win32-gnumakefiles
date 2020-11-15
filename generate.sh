@@ -250,9 +250,14 @@ sub _patch_gnumakefile_510 {
     _write_gnumakefile(\$version, <<'MAKEFILE');
 $(cat v5.10.0/GNUmakefile)
 MAKEFILE
+    if (_ge(\$version, "5.11.2")) {
+        _patch_gnumakefile(\$version, <<'PATCH');
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.10.0/GNUmakefile v5.11.2/GNUmakefile)
+PATCH
+    }
     if (_ge(\$version, "5.11.3")) {
         _patch_gnumakefile(\$version, <<'PATCH');
-$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.10.0/GNUmakefile v5.11.3/GNUmakefile)
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.11.2/GNUmakefile v5.11.3/GNUmakefile)
 PATCH
     }
 }
