@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cat <<'END'
-package Devel::PatchPerl::Plugin::MinGWGNUMakefile;
+package Devel::PatchPerl::Plugin::MinGWGNUmakefile;
 
 use utf8;
 use strict;
@@ -161,18 +161,18 @@ cat <<END
 sub _patch_gnumakefile_522 {
     my \$version = shift;
     _write_gnumakefile(\$version, <<'MAKEFILE');
-$(cat v5.22.0/GNUMakefile)
+$(cat v5.22.0/GNUmakefile)
 MAKEFILE
 }
 
 sub _patch_gnumakefile_520 {
     my \$version = shift;
     _write_gnumakefile(\$version, <<'MAKEFILE');
-$(cat v5.20.0/GNUMakefile)
+$(cat v5.20.0/GNUmakefile)
 MAKEFILE
     if (_ge(\$version, "5.20.1")) {
         _patch_gnumakefile(\$version, <<'PATCH');
-$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.20.0/GNUMakefile v5.20.1/GNUMakefile)
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.20.0/GNUmakefile v5.20.1/GNUmakefile)
 PATCH
     }
 }
@@ -180,72 +180,72 @@ PATCH
 sub _patch_gnumakefile_518 {
     my \$version = shift;
     _write_gnumakefile(\$version, <<'MAKEFILE');
-$(cat v5.18.0/GNUMakefile)
+$(cat v5.18.0/GNUmakefile)
 MAKEFILE
 }
 
 sub _patch_gnumakefile_516 {
     my \$version = shift;
     _write_gnumakefile(\$version, <<'MAKEFILE');
-$(cat v5.16.0/GNUMakefile)
+$(cat v5.16.0/GNUmakefile)
 MAKEFILE
 }
 
 sub _patch_gnumakefile_514 {
     my \$version = shift;
     _write_gnumakefile(\$version, <<'MAKEFILE');
-$(cat v5.14.0/GNUMakefile)
+$(cat v5.14.0/GNUmakefile)
 MAKEFILE
 }
 
 sub _patch_gnumakefile_512 {
     my \$version = shift;
     _write_gnumakefile(\$version, <<'MAKEFILE');
-$(cat v5.12.0/GNUMakefile)
+$(cat v5.12.0/GNUmakefile)
 MAKEFILE
     if (_ge(\$version, "5.13.3")) {
         _patch_gnumakefile(\$version, <<'PATCH');
-$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.12.0/GNUMakefile v5.13.3/GNUMakefile)
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.12.0/GNUmakefile v5.13.3/GNUmakefile)
 PATCH
     }
     if (_ge(\$version, "5.13.4")) {
         _patch_gnumakefile(\$version, <<'PATCH');
-$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.13.3/GNUMakefile v5.13.4/GNUMakefile)
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.13.3/GNUmakefile v5.13.4/GNUmakefile)
 PATCH
     }
     if (_ge(\$version, "5.13.5")) {
         _patch_gnumakefile(\$version, <<'PATCH');
-$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.13.4/GNUMakefile v5.13.5/GNUMakefile)
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.13.4/GNUmakefile v5.13.5/GNUmakefile)
 PATCH
     }
     if (_ge(\$version, "5.13.6")) {
         _patch_gnumakefile(\$version, <<'PATCH');
-$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.13.5/GNUMakefile v5.13.6/GNUMakefile)
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.13.5/GNUmakefile v5.13.6/GNUmakefile)
 PATCH
     }
     if (_ge(\$version, "5.13.7")) {
         _patch_gnumakefile(\$version, <<'PATCH');
-$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.13.6/GNUMakefile v5.13.7/GNUMakefile)
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.13.6/GNUmakefile v5.13.7/GNUmakefile)
 PATCH
     }
     if (_ge(\$version, "5.13.8")) {
         _patch_gnumakefile(\$version, <<'PATCH');
-$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.13.7/GNUMakefile v5.13.8/GNUMakefile)
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.13.7/GNUmakefile v5.13.8/GNUmakefile)
 PATCH
     }
     if (_ge(\$version, "5.13.9")) {
         _patch_gnumakefile(\$version, <<'PATCH');
-$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.13.8/GNUMakefile v5.13.9/GNUMakefile)
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.13.8/GNUmakefile v5.13.9/GNUmakefile)
 PATCH
     }
     if (_ge(\$version, "5.13.10")) {
         _patch_gnumakefile(\$version, <<'PATCH');
-$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.13.9/GNUMakefile v5.13.10/GNUMakefile)
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.13.9/GNUmakefile v5.13.10/GNUmakefile)
 PATCH
     }
     if (_ge(\$version, "5.13.11")) {
         _patch_gnumakefile(\$version, <<'PATCH');
-$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.13.10/GNUMakefile v5.13.11/GNUMakefile)
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.13.10/GNUmakefile v5.13.11/GNUmakefile)
 PATCH
     }
 }
@@ -253,35 +253,35 @@ PATCH
 sub _patch_gnumakefile_510 {
     my \$version = shift;
     _write_gnumakefile(\$version, <<'MAKEFILE');
-$(cat v5.10.0/GNUMakefile)
+$(cat v5.10.0/GNUmakefile)
 MAKEFILE
 }
 
 sub _patch_gnumakefile_509 {
     my \$version = shift;
     _write_gnumakefile(\$version, <<'MAKEFILE');
-$(cat v5.9.0/GNUMakefile)
+$(cat v5.9.0/GNUmakefile)
 MAKEFILE
 }
 
 sub _patch_gnumakefile_508 {
     my \$version = shift;
     _write_gnumakefile(\$version, <<'MAKEFILE');
-$(cat v5.8.0/GNUMakefile)
+$(cat v5.8.0/GNUmakefile)
 MAKEFILE
     if (_ge(\$version, "5.8.6")) {
         _patch_gnumakefile(\$version, <<'PATCH');
-$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.8.0/GNUMakefile v5.8.6/GNUMakefile)
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.8.0/GNUmakefile v5.8.6/GNUmakefile)
 PATCH
     }
     if (_ge(\$version, "5.8.7")) {
         _patch_gnumakefile(\$version, <<'PATCH');
-$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.8.6/GNUMakefile v5.8.7/GNUMakefile)
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.8.6/GNUmakefile v5.8.7/GNUmakefile)
 PATCH
     }
     if (_ge(\$version, "5.8.9")) {
         _patch_gnumakefile(\$version, <<'PATCH');
-$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.8.7/GNUMakefile v5.8.9/GNUMakefile)
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.8.7/GNUmakefile v5.8.9/GNUmakefile)
 PATCH
     }
 }
@@ -289,14 +289,14 @@ PATCH
 sub _patch_gnumakefile_507 {
     my \$version = shift;
     _write_gnumakefile(\$version, <<'MAKEFILE');
-$(cat v5.7.0/GNUMakefile)
+$(cat v5.7.0/GNUmakefile)
 MAKEFILE
 }
 
 sub _patch_gnumakefile_506 {
     my \$version = shift;
     _write_gnumakefile(\$version, <<'MAKEFILE');
-$(cat v5.6.0/GNUMakefile)
+$(cat v5.6.0/GNUmakefile)
 MAKEFILE
 }
 END
