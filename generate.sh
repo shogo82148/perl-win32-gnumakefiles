@@ -43,5 +43,10 @@ PATCH
 $(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.8.6/GNUMakefile v5.8.7/GNUMakefile)
 PATCH
     }
+    if (_ge(\$version, "5.8.9")) {
+        _patch(<<'PATCH');
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.8.7/GNUMakefile v5.8.9/GNUMakefile)
+PATCH
+    }
 }
 END
