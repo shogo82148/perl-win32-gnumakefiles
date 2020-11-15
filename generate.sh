@@ -170,9 +170,9 @@ sub _patch_gnumakefile_520 {
     _write_gnumakefile(\$version, <<'MAKEFILE');
 $(cat v5.20.0/GNUmakefile)
 MAKEFILE
-    if (_ge(\$version, "5.20.1")) {
+    if (_ge(\$version, "5.21.1")) {
         _patch_gnumakefile(\$version, <<'PATCH');
-$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.20.0/GNUmakefile v5.20.1/GNUmakefile)
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.20.0/GNUmakefile v5.21.1/GNUmakefile)
 PATCH
     }
 }
