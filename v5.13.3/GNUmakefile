@@ -936,8 +936,7 @@ installhtml : doc
 inst_lib : $(CONFIGPM)
 	$(RCOPY) ..\lib $(INST_LIB)\$(NULL)
 
-$(UNIDATAFILES) ..\pod\perluniprops.pod : $(HAVEMINIPERL) $(CONFIGPM) ..\lib\unicore\mktables Extensions_nonxs
-	..\$(MINIPERL) -I.. -I..\..\cpan\Cwd\lib -I..\..\cpan\Cwd mktables -P ..\..\pod -maketest -makelist -p -check $@ $(FIRSTUNIFILE)
+$(UNIDATAFILES) : ..\pod\perluniprops.pod
 
 ..\pod\perluniprops.pod: ..\lib\unicore\mktables $(CONFIGPM) $(HAVEMINIPERL) ..\lib\unicore\mktables Extensions_nonxs
 	$(MINIPERL) -I..\lib $(ICWD) ..\lib\unicore\mktables -C ..\lib\unicore -P ..\pod -maketest -makelist -p
