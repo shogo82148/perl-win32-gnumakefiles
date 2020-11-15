@@ -28,7 +28,6 @@ my @patch = (
     {
         perl => [
             qr/^5\.2[01]\./,
-            qr/^5\.20\./,
         ],
         subs => [
             [ \&_patch_gnumakefile_520 ],
