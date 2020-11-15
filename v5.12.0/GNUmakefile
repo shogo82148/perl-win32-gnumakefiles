@@ -318,46 +318,6 @@ UTILS		=			\
 		bin\perlglob.pl		\
 		bin\search.pl
 
-CORE_NOCFG_H	=		\
-		..\av.h		\
-		..\cop.h	\
-		..\cv.h		\
-		..\dosish.h	\
-		..\embed.h	\
-		..\form.h	\
-		..\gv.h		\
-		..\handy.h	\
-		..\hv.h		\
-		..\iperlsys.h	\
-		..\mg.h		\
-		..\nostdio.h	\
-		..\op.h		\
-		..\opcode.h	\
-		..\perl.h	\
-		..\perlapi.h	\
-		..\perlsdio.h	\
-		..\perlsfio.h	\
-		..\perly.h	\
-		..\pp.h		\
-		..\proto.h	\
-		..\regcomp.h	\
-		..\regexp.h	\
-		..\scope.h	\
-		..\sv.h		\
-		..\thread.h	\
-		..\unixish.h	\
-		..\utf8.h	\
-		..\util.h	\
-		..\warnings.h	\
-		..\XSUB.h	\
-		..\EXTERN.h	\
-		..\perlvars.h	\
-		..\intrpvar.h	\
-		.\include\dirent.h	\
-		.\include\netdb.h	\
-		.\include\sys\socket.h	\
-		.\win32.h
-
 CFGSH_TMPL	= config.gc
 CFGH_TMPL	= config_H.gc
 PERLIMPLIB	= $(COREDIR)\libperl__PERL_MINOR_VERSION__$(a)
