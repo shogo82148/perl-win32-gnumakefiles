@@ -671,15 +671,15 @@ $(MINIMOD) : $(HAVEMINIPERL) ..\minimod.pl
 ..\x2p\walk$(o) : ..\x2p\walk.c
 	$(CC) -I..\x2p $(CFLAGS) $(OBJOUT_FLAG)$@ -c ..\x2p\walk.c
 
-$(X2P) : $(HAVEMINIPERL) $(X2P_OBJ) Extensions
-	$(MINIPERL) -I..\lib ..\x2p\find2perl.PL
-	$(MINIPERL) -I..\lib ..\x2p\s2p.PL
+$(X2P) : $(HAVEMINIPERL) $(X2P_OBJ)
+	$(MINIPERL) ..\x2p\find2perl.PL
+	$(MINIPERL) ..\x2p\s2p.PL
 	$(LINK32) -mconsole -o $@ $(BLINK_FLAGS) $(LIBFILES) $(X2P_OBJ)
 
-$(MINIDIR)\globals$(o) : $(UUDMAP_H) $(BITCOUNT_H)
+$(MINIDIR)\globals$(o) : $(UUDMAP_H)
 
-$(UUDMAP_H) $(BITCOUNT_H) : $(GENUUDMAP)
-	$(GENUUDMAP) $(UUDMAP_H) $(BITCOUNT_H)
+$(UUDMAP_H) : $(GENUUDMAP)
+	$(GENUUDMAP) > $(UUDMAP_H)
 
 $(GENUUDMAP) : $(GENUUDMAP_OBJ)
 	$(LINK32) $(CFLAGS_O) -o $@ $(GENUUDMAP_OBJ) \
