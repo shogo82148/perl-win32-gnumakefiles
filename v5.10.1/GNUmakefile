@@ -828,4 +828,4 @@ inst_lib : $(CONFIGPM)
 $(UNIDATAFILES) : ..\pod\perluniprops.pod
 
 ..\pod\perluniprops.pod: ..\lib\unicore\mktables $(CONFIGPM) $(HAVEMINIPERL) ..\lib\unicore\mktables
-	$(MINIPERL) -I..\lib $(ICWD) ..\lib\unicore\mktables
+	cd ..\lib\unicore && ..\$(MINIPERL) -I.. -I..\..\cpan\Cwd\lib mktables
