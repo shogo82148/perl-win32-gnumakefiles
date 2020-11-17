@@ -708,6 +708,13 @@ $(PERLEXESTATIC): $(PERLSTATICLIB) $(CONFIGPM) $(PERLEXEST_OBJ) $(PERLEXE_RES)
 	$(LINK32) -mconsole -o $@ $(BLINK_FLAGS) \
 	    $(PERLEXEST_OBJ) $(PERLEXE_RES) $(PERLSTATICLIB) $(LIBFILES)
 
+$(DYNALOADER).c: $(HAVEMINIPERL) $(EXTDIR)\DynaLoader\dl_win32.xs $(CONFIGPM)
+	if not exist $(AUTODIR) mkdir $(AUTODIR)
+	cd $(EXTDIR)\DynaLoader && ..\$(MINIPERL) -I..\..\lib DynaLoader_pm.PL && ..\$(MINIPERL) -I..\..\lib XSLoader_pm.PL
+	$(XCOPY) $(EXTDIR)\DynaLoader\DynaLoader.pm $(LIBDIR)\$(NULL)
+	$(XCOPY) $(EXTDIR)\DynaLoader\XSLoader.pm $(LIBDIR)\$(NULL)
+	cd $(EXTDIR)\DynaLoader && $(XSUBPP) dl_win32.xs > $(DYNALOADER).c
+
 MakePPPort: $(HAVEMINIPERL) $(CONFIGPM)
 	$(MINIPERL) -I..\lib $(ICWD) ..\mkppport
 
