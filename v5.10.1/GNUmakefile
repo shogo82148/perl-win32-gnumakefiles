@@ -771,6 +771,7 @@ utils: $(PERLEXE) $(X2P)
 	copy ..\README.dos      ..\pod\perldos.pod
 	copy ..\README.epoc     ..\pod\perlepoc.pod
 	copy ..\README.freebsd  ..\pod\perlfreebsd.pod
+	copy ..\README.haiku    ..\pod\perlhaiku.pod
 	copy ..\README.hpux     ..\pod\perlhpux.pod
 	copy ..\README.hurd     ..\pod\perlhurd.pod
 	copy ..\README.irix     ..\pod\perlirix.pod
@@ -796,7 +797,6 @@ utils: $(PERLEXE) $(X2P)
 	copy ..\README.tw       ..\pod\perltw.pod
 	copy ..\README.uts      ..\pod\perluts.pod
 	copy ..\README.vmesa    ..\pod\perlvmesa.pod
-	copy ..\README.vms      ..\pod\perlvms.pod
 	copy ..\README.vos      ..\pod\perlvos.pod
 	copy ..\README.win32    ..\pod\perlwin32.pod
 	copy ..\pod\perl__PERL_VERSION__delta.pod ..\pod\perldelta.pod
