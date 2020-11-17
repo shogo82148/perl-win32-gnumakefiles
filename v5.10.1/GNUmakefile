@@ -632,11 +632,8 @@ $(DLL_OBJ)	: $(CORE_H)
 
 $(X2P_OBJ)	: $(CORE_H)
 
-perllibst.h : $(HAVEMINIPERL) $(CONFIGPM) create_perllibst_h.pl
+perldll.def : $(HAVEMINIPERL) $(CONFIGPM) ..\global.sym ..\pp.sym ..\makedef.pl create_perllibst_h.pl
 	$(MINIPERL) -I..\lib create_perllibst_h.pl
-
-perldll.def : $(HAVEMINIPERL) $(CONFIGPM) ..\global.sym ..\pp.sym ..\makedef.pl
-	$(MINIPERL) -I..\lib buildext.pl --create-perllibst-h
 	$(MINIPERL) -w ..\makedef.pl PLATFORM=win32 $(OPTIMIZE) $(DEFINES) $(BUILDOPT) \
 		CCTYPE=$(CCTYPE) > perldll.def
 
