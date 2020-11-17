@@ -374,10 +374,8 @@ MICROCORE_SRC	=		\
 		..\dump.c	\
 		..\globals.c	\
 		..\gv.c		\
-		..\mro.c	\
 		..\hv.c		\
 		..\locale.c	\
-		..\mathoms.c    \
 		..\mg.c		\
 		..\numeric.c	\
 		..\op.c		\
@@ -453,7 +451,6 @@ CORE_NOCFG_H	=		\
 		..\perly.h	\
 		..\pp.h		\
 		..\proto.h	\
-		..\regcomp.h	\
 		..\regexp.h	\
 		..\scope.h	\
 		..\sv.h		\
@@ -466,6 +463,7 @@ CORE_NOCFG_H	=		\
 		..\EXTERN.h	\
 		..\perlvars.h	\
 		..\intrpvar.h	\
+		..\thrdvar.h	\
 		.\include\dirent.h	\
 		.\include\netdb.h	\
 		.\include\sys\socket.h	\
