@@ -482,10 +482,6 @@ ICWD = -I..\cpan\Cwd -I..\cpan\Cwd\lib
 all : .\config.h $(GLOBEXE) $(MINIMOD) $(CONFIGPM) $(PERLEXE) $(X2P) Extensions
 	@echo Everything is up to date. '$(MAKE_BARE) test' to run test suite.
 
-..\regcomp$(o) : ..\regnodes.h ..\regcharclass.h
-
-..\regexec$(o) : ..\regnodes.h ..\regcharclass.h
-
 $(DYNALOADER)$(o) : $(DYNALOADER).c $(CORE_H) $(EXTDIR)\DynaLoader\dlutils.c
 
 #----------------------------------------------------------------
