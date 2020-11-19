@@ -241,6 +241,7 @@ GLOBEXE		= ..\perlglob.exe
 CONFIGPM	= ..\lib\Config.pm
 MINIMOD	= ..\lib\ExtUtils\Miniperl.pm
 X2P		= ..\x2p\a2p.exe
+GENUUDMAP	= ..\generate_uudmap.exe
 PERLEXE_RES	= .\perlexe.res
 PERLDLL_RES	=
 
