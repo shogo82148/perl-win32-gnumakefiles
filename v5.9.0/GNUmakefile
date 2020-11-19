@@ -240,7 +240,7 @@ GLOBEXE		= ..\perlglob.exe
 CONFIGPM	= ..\lib\Config.pm ..\lib\Config_heavy.pl
 MINIMOD	= ..\lib\ExtUtils\Miniperl.pm
 X2P		= ..\x2p\a2p.exe
-PERLEXE_RES	= .\perlexe.res
+PERLEXE_RES	=
 PERLDLL_RES	=
 
 
