@@ -277,9 +277,14 @@ sub _patch_gnumakefile_509 {
     _write_gnumakefile(\$version, <<'MAKEFILE');
 $(cat v5.9.0/GNUmakefile)
 MAKEFILE
+    if (_ge(\$version, "5.9.4")) {
+        _patch_gnumakefile(\$version, <<'PATCH');
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.9.0/GNUmakefile v5.9.4/GNUmakefile)
+PATCH
+    }
     if (_ge(\$version, "5.9.5")) {
         _patch_gnumakefile(\$version, <<'PATCH');
-$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.9.0/GNUmakefile v5.9.5/GNUmakefile)
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.9.4/GNUmakefile v5.9.5/GNUmakefile)
 PATCH
     }
 }
