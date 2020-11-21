@@ -18,7 +18,7 @@ CCTYPE		:= GCC
 #USE_PERLCRT	= define
 #USE_SETARGV	:= define
 #USE_5005THREADS:= define
-CRYPT_SRC	= .\fcrypt.c
+#CRYPT_SRC	= .\fcrypt.c
 #CRYPT_LIB	= fcrypt.lib
 #PERL_MALLOC	:= define
 #DEBUG_MSTATS	:= define
@@ -748,7 +748,6 @@ $(HAVEMINIPERL): $(MINI_OBJ)
 #most of deps of this target are in DYNALOADER and therefore omitted here
 Extensions : buildext.pl $(HAVEMINIPERL) $(PERLDEP) $(CONFIGPM)
 	$(MINIPERL) -I..\lib $(ICWD) buildext.pl "$(PLMAKE)" $(PERLDEP) $(EXTDIR)
-	$(MINIPERL) -I..\lib $(ICWD) buildext.pl "$(PLMAKE)" $(PERLDEP) ext
 
 #-------------------------------------------------------------------------------
 
