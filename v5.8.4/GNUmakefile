@@ -257,9 +257,18 @@ UTILS		=			\
 		..\utils\perlbug	\
 		..\utils\pl2pm 		\
 		..\utils\c2ph		\
+		..\utils\pstruct	\
 		..\utils\h2xs		\
 		..\utils\perldoc	\
 		..\utils\perlcc		\
+		..\utils\perlivp	\
+		..\utils\libnetcfg	\
+		..\utils\enc2xs		\
+		..\utils\piconv		\
+		..\utils\cpan		\
+		..\utils\xsubpp		\
+		..\utils\prove		\
+		..\utils\instmodsh	\
 		..\pod\checkpods	\
 		..\pod\pod2html		\
 		..\pod\pod2latex	\
@@ -269,7 +278,13 @@ UTILS		=			\
 		..\pod\podchecker	\
 		..\pod\podselect	\
 		..\x2p\find2perl	\
-		..\x2p\s2p
+		..\x2p\psed		\
+		..\x2p\s2p		\
+		bin\exetype.pl		\
+		bin\runperl.pl		\
+		bin\pl2bat.pl		\
+		bin\perlglob.pl		\
+		bin\search.pl
 
 CFGSH_TMPL	= config.gc
 CFGH_TMPL	= config_H.gc
@@ -386,7 +401,11 @@ CORE_NOCFG_H	=		\
 		..\EXTERN.h	\
 		..\perlvars.h	\
 		..\intrpvar.h	\
-		..\thrdvar.h	
+		..\thrdvar.h	\
+		.\include\dirent.h	\
+		.\include\netdb.h	\
+		.\include\sys\socket.h	\
+		.\win32.h
 
 CORE_H		= $(CORE_NOCFG_H) .\config.h
 
