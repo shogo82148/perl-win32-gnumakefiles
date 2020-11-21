@@ -346,9 +346,14 @@ sub _patch_gnumakefile_507 {
     _write_gnumakefile(\$version, <<'MAKEFILE');
 $(cat v5.7.0/GNUmakefile)
 MAKEFILE
+    if (_ge(\$version, "5.7.1")) {
+        _patch_gnumakefile(\$version, <<'PATCH');
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.7.0/GNUmakefile v5.7.1/GNUmakefile)
+PATCH
+    }
     if (_ge(\$version, "5.7.2")) {
         _patch_gnumakefile(\$version, <<'PATCH');
-$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.7.0/GNUmakefile v5.7.2/GNUmakefile)
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.7.1/GNUmakefile v5.7.2/GNUmakefile)
 PATCH
     }
     if (_ge(\$version, "5.7.3")) {
