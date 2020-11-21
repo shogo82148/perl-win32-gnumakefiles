@@ -343,6 +343,10 @@ WIN32_SRC	=		\
 		.\win32sck.c	\
 		.\win32thread.c 
 
+ifeq ($(USE_PERLIO),define)
+WIN32_SRC	+= .\win32io.c
+endif
+
 ifneq ($(CRYPT_SRC), "")
 WIN32_SRC	+= $(CRYPT_SRC)
 endif
