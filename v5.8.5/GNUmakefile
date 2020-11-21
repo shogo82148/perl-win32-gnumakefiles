@@ -478,6 +478,7 @@ CFG_VARS	=					\
 		"usethreads=$(USE_5005THREADS)"		\
 		"usemultiplicity=$(USE_MULTI)"		\
 		"useperlio=$(USE_PERLIO)"		\
+		"use64bitint=$(USE_64_BIT_INT)"		\
 		"uselargefiles=$(USE_LARGE_FILES)"	\
 		"LINK_FLAGS=$(subst ",\",$(LINK_FLAGS))"\
 		"optimize=$(subst ",\",$(OPTIMIZE))"
