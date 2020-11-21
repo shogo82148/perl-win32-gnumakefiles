@@ -767,7 +767,6 @@ utils: $(PERLEXE) $(X2P)
 	copy ..\README.epoc     ..\pod\perlepoc.pod
 	copy ..\README.hpux     ..\pod\perlhpux.pod
 	copy ..\README.hurd     ..\pod\perlhurd.pod
-	copy ..\README.irix     ..\pod\perlirix.pod
 	copy ..\README.machten  ..\pod\perlmachten.pod
 	copy ..\README.macos    ..\pod\perlmacos.pod
 	copy ..\README.mint     ..\pod\perlmint.pod
