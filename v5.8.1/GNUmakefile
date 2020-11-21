@@ -257,9 +257,15 @@ UTILS		=			\
 		..\utils\perlbug	\
 		..\utils\pl2pm 		\
 		..\utils\c2ph		\
+		..\utils\pstruct	\
 		..\utils\h2xs		\
 		..\utils\perldoc	\
 		..\utils\perlcc		\
+		..\utils\perlivp	\
+		..\utils\libnetcfg	\
+		..\utils\enc2xs		\
+		..\utils\piconv		\
+		..\utils\cpan		\
 		..\pod\checkpods	\
 		..\pod\pod2html		\
 		..\pod\pod2latex	\
@@ -269,7 +275,14 @@ UTILS		=			\
 		..\pod\podchecker	\
 		..\pod\podselect	\
 		..\x2p\find2perl	\
-		..\x2p\s2p
+		..\x2p\psed		\
+		..\x2p\s2p		\
+		..\lib\ExtUtils\xsubpp	\
+		bin\exetype.pl		\
+		bin\runperl.pl		\
+		bin\pl2bat.pl		\
+		bin\perlglob.pl		\
+		bin\search.pl
 
 CFGSH_TMPL	= config.gc
 CFGH_TMPL	= config_H.gc
@@ -302,6 +315,7 @@ MICROCORE_SRC	=		\
 		..\mg.c		\
 		..\numeric.c	\
 		..\op.c		\
+		..\pad.c	\
 		..\perl.c	\
 		..\perlapi.c	\
 		..\perly.c	\
@@ -385,7 +399,11 @@ CORE_NOCFG_H	=		\
 		..\EXTERN.h	\
 		..\perlvars.h	\
 		..\intrpvar.h	\
-		..\thrdvar.h	
+		..\thrdvar.h	\
+		.\include\dirent.h	\
+		.\include\netdb.h	\
+		.\include\sys\socket.h	\
+		.\win32.h
 
 CORE_H		= $(CORE_NOCFG_H) .\config.h
 
@@ -741,13 +759,39 @@ doc: $(PERLEXE)
 
 utils: $(PERLEXE) $(X2P)
 	cd ..\utils && $(PLMAKE) PERL=$(MINIPERL)
+	copy ..\README.aix      ..\pod\perlaix.pod
 	copy ..\README.amiga    ..\pod\perlamiga.pod
+	copy ..\README.apollo   ..\pod\perlapollo.pod
+	copy ..\README.beos     ..\pod\perlbeos.pod
+	copy ..\README.bs2000   ..\pod\perlbs2000.pod
+	copy ..\README.ce       ..\pod\perlce.pod
+	copy ..\README.cn       ..\pod\perlcn.pod
 	copy ..\README.cygwin   ..\pod\perlcygwin.pod
+	copy ..\README.dgux     ..\pod\perldgux.pod
 	copy ..\README.dos      ..\pod\perldos.pod
+	copy ..\README.epoc     ..\pod\perlepoc.pod
 	copy ..\README.freebsd  ..\pod\perlfreebsd.pod
 	copy ..\README.hpux     ..\pod\perlhpux.pod
-	copy ..\README.netware  ..\pod\perlnw5.pod
+	copy ..\README.hurd     ..\pod\perlhurd.pod
+	copy ..\README.irix     ..\pod\perlirix.pod
+	copy ..\README.jp       ..\pod\perljp.pod
+	copy ..\README.ko       ..\pod\perlko.pod
+	copy ..\README.machten  ..\pod\perlmachten.pod
+	copy ..\README.macos    ..\pod\perlmacos.pod
+	copy ..\README.macosx   ..\pod\perlmacosx.pod
+	copy ..\README.mint     ..\pod\perlmint.pod
+	copy ..\README.mpeix    ..\pod\perlmpeix.pod
+	copy ..\README.netware  ..\pod\perlnetware.pod
 	copy ..\README.os2      ..\pod\perlos2.pod
+	copy ..\README.os390    ..\pod\perlos390.pod
+	copy ..\README.os400    ..\pod\perlos400.pod
+	copy ..\README.plan9    ..\pod\perlplan9.pod
+	copy ..\README.qnx      ..\pod\perlqnx.pod
+	copy ..\README.solaris  ..\pod\perlsolaris.pod
+	copy ..\README.tru64    ..\pod\perltru64.pod
+	copy ..\README.tw       ..\pod\perltw.pod
+	copy ..\README.uts      ..\pod\perluts.pod
+	copy ..\README.vmesa    ..\pod\perlvmesa.pod
 	copy ..\README.vms      ..\pod\perlvms.pod
 	copy ..\README.vos      ..\pod\perlvos.pod
 	copy ..\README.win32    ..\pod\perlwin32.pod
