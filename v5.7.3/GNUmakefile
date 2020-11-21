@@ -344,7 +344,7 @@ WIN32_SRC	=		\
 		.\win32sck.c	\
 		.\win32thread.c 
 
-ifeq ($(USE_PERLIO), "define")
+ifeq ($(USE_PERLIO),define)
 WIN32_SRC	+= .\win32io.c
 endif
 
