@@ -17,6 +17,7 @@ CCTYPE		:= GCC
 #CFG		:= Debug
 #USE_PERLCRT	= define
 #USE_SETARGV	:= define
+#USE_5005THREADS:= define
 CRYPT_SRC	= .\fcrypt.c
 #CRYPT_LIB	= fcrypt.lib
 #PERL_MALLOC	:= define
@@ -48,6 +49,7 @@ USE_LARGE_FILES	?= undef
 USE_64_BIT_INT	?= undef
 USE_LONG_DOUBLE	?= undef
 USE_NO_REGISTRY	?= undef
+USE_5005THREADS ?= undef
 
 ifneq ("$(CRYPT_SRC)$(CRYPT_LIB)", "")
 D_CRYPT		= define
