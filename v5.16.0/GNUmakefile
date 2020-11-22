@@ -901,6 +901,7 @@ utils: $(PERLEXE) $(X2P)
 	copy ..\README.symbian  ..\pod\perlsymbian.pod
 	copy ..\README.tru64    ..\pod\perltru64.pod
 	copy ..\README.tw       ..\pod\perltw.pod
+	copy ..\README.uts      ..\pod\perluts.pod
 	copy ..\README.vmesa    ..\pod\perlvmesa.pod
 	copy ..\README.vos      ..\pod\perlvos.pod
 	copy ..\README.win32    ..\pod\perlwin32.pod
