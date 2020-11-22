@@ -219,6 +219,11 @@ PATCH
 $(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.17.6/GNUmakefile v5.17.7/GNUmakefile)
 PATCH
     }
+    if (_ge(\$version, "5.17.10")) {
+        _patch_gnumakefile(\$version, <<'PATCH');
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.17.7/GNUmakefile v5.17.10/GNUmakefile)
+PATCH
+    }
 }
 
 sub _patch_gnumakefile_514 {
