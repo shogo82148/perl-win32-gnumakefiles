@@ -770,7 +770,8 @@ utils: $(PERLEXE) $(X2P)
 	copy ..\README.win32    ..\pod\perlwin32.pod
 	cd ..\lib && $(PERLEXE) -Dtls lib_pm.PL
 	cd ..\pod && $(PLMAKE) -f ..\win32\pod.mak converters
-	$(PERLEXE) -I..\lib $(PL2BAT) $(UTILS)
+# 	FIXME: it faisl with "gmake: *** [GNUmakefile:872: utils] Error -1073741515"
+#	$(PERLEXE) -I..\lib $(PL2BAT) $(UTILS)
 
 install : all installbare installhtml
 
