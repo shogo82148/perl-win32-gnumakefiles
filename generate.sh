@@ -404,4 +404,6 @@ $(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.6.0/GNUmakefile v5.6.2/GN
 PATCH
     }
 }
+
+1;
 END
