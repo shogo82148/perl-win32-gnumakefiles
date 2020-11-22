@@ -8,7 +8,6 @@ INST_TOP := $(INST_DRV)\perl
 USE_MULTI	:= define
 USE_ITHREADS	:= define
 USE_IMP_SYS	:= define
-USE_PERLIO	:= define
 USE_LARGE_FILES	:= define
 #USE_64_BIT_INT	:= define
 #USE_LONG_DOUBLE :=define
@@ -44,7 +43,6 @@ USE_SITECUST	?= undef
 USE_MULTI	?= undef
 USE_ITHREADS	?= undef
 USE_IMP_SYS	?= undef
-USE_PERLIO	?= undef
 USE_LARGE_FILES	?= undef
 USE_64_BIT_INT	?= undef
 USE_LONG_DOUBLE	?= undef
@@ -102,15 +100,6 @@ ARCHNAME	= MSWin32-$(ARCHITECTURE)-thread
 else ifeq ($(USE_MULTI),define)
 ARCHNAME	= MSWin32-$(ARCHITECTURE)-multi
 else
-ifeq ($(USE_PERLIO),define)
-ARCHNAME	= MSWin32-$(ARCHITECTURE)-perlio
-else
-ARCHNAME	= MSWin32-$(ARCHITECTURE)
-endif
-endif
-
-ifeq ($(USE_PERLIO),define)
-BUILDOPT	+= -DUSE_PERLIO
 endif
 
 ifeq ($(USE_ITHREADS),define)
@@ -523,7 +512,6 @@ CFG_VARS	=					\
 		"useithreads=$(USE_ITHREADS)"		\
 		"usethreads=$(USE_5005THREADS)"		\
 		"usemultiplicity=$(USE_MULTI)"		\
-		"useperlio=$(USE_PERLIO)"		\
 		"use64bitint=$(USE_64_BIT_INT)"		\
 		"uselargefiles=$(USE_LARGE_FILES)"	\
 		"LINK_FLAGS=$(subst ",\",$(LINK_FLAGS))"\
