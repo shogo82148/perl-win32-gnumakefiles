@@ -404,7 +404,7 @@ endif
 
 DYNAMIC_EXT	= Socket IO Fcntl Opcode SDBM_File POSIX attrs Thread B re \
 		Data/Dumper Devel/Peek ByteLoader Devel/DProf File/Glob \
-		Sys/Hostname Storable
+		Sys/Hostname
 STATIC_EXT	= DynaLoader
 NONXS_EXT	= Errno
 
@@ -426,7 +426,6 @@ BYTELOADER	= $(EXTDIR)\ByteLoader\ByteLoader
 DPROF		= $(EXTDIR)\Devel\DProf\DProf
 GLOB		= $(EXTDIR)\File\Glob\Glob
 HOSTNAME	= $(EXTDIR)\Sys\Hostname\Hostname
-STORABLE	= $(EXTDIR)\Storable\Storable
 
 SOCKET_DLL	= $(AUTODIR)\Socket\Socket.dll
 FCNTL_DLL	= $(AUTODIR)\Fcntl\Fcntl.dll
@@ -444,7 +443,6 @@ BYTELOADER_DLL	= $(AUTODIR)\ByteLoader\ByteLoader.dll
 DPROF_DLL	= $(AUTODIR)\Devel\DProf\DProf.dll
 GLOB_DLL	= $(AUTODIR)\File\Glob\Glob.dll
 HOSTNAME_DLL	= $(AUTODIR)\Sys\Hostname\Hostname.dll
-STORABLE_DLL	= $(AUTODIR)\Storable\Storable.dll
 
 ERRNO_PM	= $(LIBDIR)\Errno.pm
 
@@ -464,8 +462,7 @@ EXTENSION_C	= 		\
 		$(BYTELOADER).c	\
 		$(DPROF).c	\
 		$(GLOB).c	\
-		$(HOSTNAME).c	\
-		$(STORABLE).c
+		$(HOSTNAME).c
 
 EXTENSION_DLL	= 		\
 		$(SOCKET_DLL)	\
@@ -483,8 +480,7 @@ EXTENSION_DLL	= 		\
 		$(BYTELOADER_DLL)	\
 		$(DPROF_DLL)	\
 		$(GLOB_DLL)	\
-		$(HOSTNAME_DLL)	\
-		$(STORABLE_DLL)
+		$(HOSTNAME_DLL)
 
 EXTENSION_PM	=		\
 		$(ERRNO_PM)
@@ -844,9 +840,6 @@ $(HOSTNAME_DLL): $(HAVEMINIPERL) $(HOSTNAME).xs
 
 $(BYTELOADER_DLL): $(HAVEMINIPERL) $(BYTELOADER).xs
 	cd $(EXTDIR)\ByteLoader && ..\..\miniperl -I..\..\lib Makefile.PL INSTALLDIRS=perl && $(PLMAKE)
-
-$(STORABLE_DLL): $(HAVEMINIPERL) $(STORABLE).xs
-	cd $(EXTDIR)\Storable && ..\..\miniperl -I..\..\lib Makefile.PL INSTALLDIRS=perl && $(PLMAKE)
 
 $(ERRNO_PM): $(HAVEMINIPERL) $(ERRNO)_pm.PL
 	cd $(EXTDIR)\Errno && ..\..\miniperl -I..\..\lib Makefile.PL INSTALLDIRS=perl && $(PLMAKE)
