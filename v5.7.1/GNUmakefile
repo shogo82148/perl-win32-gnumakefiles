@@ -260,8 +260,6 @@ UTILS		=			\
 		..\utils\h2xs		\
 		..\utils\perldoc	\
 		..\utils\perlcc		\
-		..\utils\perlivp	\
-		..\utils\libnetcfg	\
 		..\pod\checkpods	\
 		..\pod\pod2html		\
 		..\pod\pod2latex	\
@@ -272,7 +270,6 @@ UTILS		=			\
 		..\pod\podselect	\
 		..\x2p\find2perl	\
 		..\x2p\s2p		\
-		..\lib\ExtUtils\xsubpp	\
 		bin\exetype.pl		\
 		bin\runperl.pl		\
 		bin\pl2bat.pl		\
