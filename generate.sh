@@ -368,5 +368,10 @@ sub _patch_gnumakefile_506 {
     _write_gnumakefile(\$version, <<'MAKEFILE');
 $(cat v5.6.0/GNUmakefile)
 MAKEFILE
+    if (_ge(\$version, "5.6.2")) {
+        _patch_gnumakefile(\$version, <<'PATCH');
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.6.0/GNUmakefile v5.6.2/GNUmakefile)
+PATCH
+    }
 }
 END
