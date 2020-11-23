@@ -860,10 +860,6 @@ doc: $(PERLEXE) ..\pod\perltoc.pod
 	    --podpath=pod:lib:ext:utils --htmlroot="file://$(subst :,|,$(INST_HTML))" \
 	    --libpod=perlfunc:perlguts:perlvar:perlrun:perlop --recurse
 
-# perl 5.18.x do not need this, it is for perl 5.19.2
-..\utils\Makefile: $(HAVEMINIPERL) $(CONFIGPM) ..\utils\Makefile.PL
-	$(MINIPERL) -I..\lib ..\utils\Makefile.PL ..
-
 # Note that this next section is parsed (and regenerated) by pod/buildtoc
 # so please check that script before making structural changes here
 utils: $(PERLEXE) $(X2P)
