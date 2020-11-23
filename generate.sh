@@ -231,6 +231,11 @@ sub _patch_gnumakefile_514 {
     _write_gnumakefile(\$version, <<'MAKEFILE');
 $(cat v5.14.0/GNUmakefile)
 MAKEFILE
+    if (! -e 'utils\dprofpp') { # _ge(\$version, "5.15.0")
+        _patch_gnumakefile(\$version, <<'PATCH');
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.14.0/GNUmakefile v5.15.0/GNUmakefile)
+PATCH
+    }
 }
 
 sub _patch_gnumakefile_512 {
