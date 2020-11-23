@@ -811,8 +811,8 @@ $(DYNALOADER) : ..\make_ext.pl $(HAVEMINIPERL) ..\lib\buildcustomize.pl $(PERLDE
 
 doc: $(PERLEXE) ..\pod\perltoc.pod
 	$(PERLEXE) -I..\lib ..\installhtml --podroot=.. --htmldir=$(HTMLDIR) \
-	    --podpath=pod:lib:utils --htmlroot="file://$(subst :,|,$(INST_HTML))"\
-	    --recurse
+	    --podpath=pod:lib:ext:utils --htmlroot="file://$(subst :,|,$(INST_HTML))" \
+	    --libpod=perlfunc:perlguts:perlvar:perlrun:perlop --recurse
 
 utils: $(PERLEXE) $(X2P)
 	cd ..\utils && $(PLMAKE) PERL=$(MINIPERL)
