@@ -194,9 +194,14 @@ sub _patch_gnumakefile_516 {
     _write_gnumakefile(\$version, <<'MAKEFILE');
 $(cat v5.16.0/GNUmakefile)
 MAKEFILE
+    if (_ge(\$version, "5.17.1")) {
+        _patch_gnumakefile(\$version, <<'PATCH');
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.16.0/GNUmakefile v5.17.1/GNUmakefile)
+PATCH
+    }
     if (! -e 'README.uts') { # _ge(\$version, "5.17.3")
         _patch_gnumakefile(\$version, <<'PATCH');
-$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.16.0/GNUmakefile v5.17.3/GNUmakefile)
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.17.1/GNUmakefile v5.17.3/GNUmakefile)
 PATCH
     }
     if (! -e 'README.vmesa') { # _ge(\$version, "5.17.4")
