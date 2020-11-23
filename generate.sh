@@ -194,32 +194,32 @@ sub _patch_gnumakefile_516 {
     _write_gnumakefile(\$version, <<'MAKEFILE');
 $(cat v5.16.0/GNUmakefile)
 MAKEFILE
-    if (_ge(\$version, "5.17.3")) {
+    if (! -e 'README.uts') { # _ge(\$version, "5.17.3")
         _patch_gnumakefile(\$version, <<'PATCH');
 $(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.16.0/GNUmakefile v5.17.3/GNUmakefile)
 PATCH
     }
-    if (_ge(\$version, "5.17.4")) {
+    if (! -e 'README.vmesa') { # _ge(\$version, "5.17.4")
         _patch_gnumakefile(\$version, <<'PATCH');
 $(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.17.3/GNUmakefile v5.17.4/GNUmakefile)
 PATCH
     }
-    if (_ge(\$version, "5.17.5")) {
+    if (! -e 'README.mpeix') { # _ge(\$version, "5.17.5")
         _patch_gnumakefile(\$version, <<'PATCH');
 $(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.17.4/GNUmakefile v5.17.5/GNUmakefile)
 PATCH
     }
-    if (_ge(\$version, "5.17.6")) {
+    if (! -e 'README.epoc') { # _ge(\$version, "5.17.6")
         _patch_gnumakefile(\$version, <<'PATCH');
 $(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.17.5/GNUmakefile v5.17.6/GNUmakefile)
 PATCH
     }
-    if (_ge(\$version, "5.17.7")) {
+    if (! -e 'README.beos') { # _ge(\$version, "5.17.7")
         _patch_gnumakefile(\$version, <<'PATCH');
 $(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.17.6/GNUmakefile v5.17.7/GNUmakefile)
 PATCH
     }
-    if (_ge(\$version, "5.17.10")) {
+    if (-e 'hv_func.h') { # ge(\$version, "5.17.10")
         _patch_gnumakefile(\$version, <<'PATCH');
 $(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.17.7/GNUmakefile v5.17.10/GNUmakefile)
 PATCH
