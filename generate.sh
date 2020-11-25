@@ -322,9 +322,14 @@ MAKEFILE
 $(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.9.0/GNUmakefile v5.9.1/GNUmakefile)
 PATCH
     }
+    if (_ge(\$version, "5.9.2")) {
+        _patch_gnumakefile(\$version, <<'PATCH');
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.9.1/GNUmakefile v5.9.2/GNUmakefile)
+PATCH
+    }
     if (_ge(\$version, "5.9.3")) {
         _patch_gnumakefile(\$version, <<'PATCH');
-$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.9.1/GNUmakefile v5.9.3/GNUmakefile)
+$(diff -L win32/GNUmakefile -L win32/GNUmakefile -u v5.9.2/GNUmakefile v5.9.3/GNUmakefile)
 PATCH
     }
     if (_ge(\$version, "5.9.4")) {
