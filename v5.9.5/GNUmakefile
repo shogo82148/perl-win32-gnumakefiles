@@ -514,8 +514,8 @@ ICWD = -I..\cpan\Cwd -I..\cpan\Cwd\lib
 
 .PHONY: all
 
-all : .\config.h $(GLOBEXE) $(MINIMOD) $(CONFIGPM) $(UNIDATAFILES) $(PERLEXE) \
-		$(X2P) MakePPPort Extensions $(PERLSTATIC)
+all : .\config.h $(GLOBEXE) $(MINIMOD) $(CONFIGPM) \
+		$(UNIDATAFILES) MakePPPort $(PERLEXE) $(X2P) Extensions $(PERLSTATIC)
 	@echo Everything is up to date. '$(MAKE_BARE) test' to run test suite.
 
 ..\regcomp$(o) : ..\regnodes.h ..\regcharclass.h
