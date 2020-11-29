@@ -806,9 +806,6 @@ installbare : utils ..\pod\perltoc.pod
 installhtml : doc
 	$(RCOPY) $(HTMLDIR)\*.* $(INST_HTML)\$(NULL)
 
-inst_lib : $(CONFIGPM)
-	$(RCOPY) ..\lib $(INST_LIB)\$(NULL)
-
 $(UNIDATAFILES) : ..\pod\perluniprops.pod
 
 ..\pod\perluniprops.pod: ..\lib\unicore\mktables $(CONFIGPM) $(HAVEMINIPERL) ..\lib\unicore\mktables Extensions_nonxs
