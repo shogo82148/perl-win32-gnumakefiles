@@ -698,6 +698,11 @@ $(PERLDLL): perldll.def $(PERLEXPLIB) $(PERLDLL_OBJ)
 	$(LINK32) -mdll -o $@ $(BLINK_FLAGS) \
 	   $(PERLDLL_OBJ) $(LIBFILES) $(PERLEXPLIB)
 
+$(PERLEXE_ICO): $(HAVEMINIPERL) ..\uupacktool.pl $(PERLEXE_ICO).packd
+	$(MINIPERL) -I..\lib ..\uupacktool.pl -u $(PERLEXE_ICO).packd $(PERLEXE_ICO)
+
+$(PERLEXE_RES): perlexe.rc $(PERLEXE_ICO)
+
 $(MINIMOD) : $(HAVEMINIPERL) ..\minimod.pl
 	cd .. && miniperl minimod.pl > lib\ExtUtils\Miniperl.pm && cd win32
 
