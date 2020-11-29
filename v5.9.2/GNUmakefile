@@ -698,8 +698,8 @@ $(PERLDLL): perldll.def $(PERLEXPLIB) $(PERLDLL_OBJ)
 	$(LINK32) -mdll -o $@ $(BLINK_FLAGS) \
 	   $(PERLDLL_OBJ) $(LIBFILES) $(PERLEXPLIB)
 
-$(PERLEXE_ICO): $(HAVEMINIPERL) ..\uupacktool.pl $(PERLEXE_ICO).packd
-	$(MINIPERL) -I..\lib ..\uupacktool.pl -u $(PERLEXE_ICO).packd $(PERLEXE_ICO)
+$(PERLEXE_ICO): $(HAVEMINIPERL) makeico.pl
+	$(MINIPERL) makeico.pl > $@
 
 $(PERLEXE_RES): perlexe.rc $(PERLEXE_ICO)
 
