@@ -829,4 +829,4 @@ installhtml : doc
 	$(RCOPY) $(HTMLDIR)\*.* $(INST_HTML)\$(NULL)
 
 $(UNIDATAFILES) : $(HAVEMINIPERL) $(CONFIGPM) ..\lib\unicore\mktables
-	cd ..\lib\unicore && ..\$(MINIPERL) -I.. mktables -check $@ $(FIRSTUNIFILE)
+	cd ..\lib\unicore && ..\$(MINIPERL) -I.. mktables
